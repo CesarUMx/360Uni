@@ -1,0 +1,53 @@
+
+
+
+<section>
+
+    <img src="/img/logo.png" alt="logo" />
+    
+    
+<ul id="menu" >
+
+
+    <?php
+    if (isset($menu))
+
+
+        foreach ($menu as $m)
+            echo '<li>
+        <div class="hexIn">
+          <a class="hexLink" href="' . $this->url->get($m->url) . '">
+              <div class="content"><img src = "/img/apps/'.$m->icono.'.svg" alt="Logo_app"/></div>
+            <h1>' . $m->nombre . '</h1>
+            <p>' . $m->descripcion . '</p>
+          </a>
+        </div>
+      </li>';
+        ?>
+
+
+
+        
+</ul>
+
+</section>
+    
+
+
+<div id="usuario">
+    
+    <img id="_avatar" class="user-img" alt="user avatar">
+    <?php
+    echo "<h5>".$this->session->get("usuario_nombre")."</h5>";
+    echo "<h6 style='margin-bottom:10px;'>".$this->session->get("usuario_tipo")."</h6>";
+    ?>
+    
+    <a href="/index/logout">Cerrar Sesión</a>
+    
+    </div>
+    
+<footer></footer>
+
+<script>
+var id_usuario=<?php echo $this->session->get("usuario_id") ?>;
+</script>

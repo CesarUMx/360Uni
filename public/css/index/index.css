@@ -1,0 +1,124 @@
+*, *:after, *:before {
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+body {
+    background: url('/img/custom/portada.png') no-repeat 25% 25% 
+}
+
+html,body {
+    font-family: Arial;
+    height: 100%;
+    width: 100%;
+    font-weight: 500;
+    font-size: 1.05em;
+    overflow: hidden;
+    background-size: cover;
+    color: #000;
+    padding:0;
+    margin:0;
+}
+
+
+.login-bg{
+    background-color: #dbdcdd;
+}
+#logo-login {
+    width: 85%;
+    padding: 30px;
+}
+
+.label_pass{
+    font-family: 'SF Pro Display', sans-serif;
+    font-weight: bold;
+}
+
+.card-login {
+    width: 434px;
+    height: 608px;
+    margin: auto;
+}
+
+.card-login-body {
+    width: 100%;
+    height: 100%;
+}
+
+.key-input {
+    transform: translateY(-40%) rotate(125deg) !important;
+    ;
+}
+
+.btn-login {
+    color: white;
+    background-color: #FF4D00;
+    width: 375px;
+    border-radius: 10px;
+    font-family: 'SF Pro Display', sans-serif;
+}
+
+.btn-login:hover {
+    color: white;
+    background-color: #FF4D00;
+    width: 375px;
+    border-radius: 10px;
+    font-family: 'SF Pro Display', sans-serif;
+    font-weight: bold;
+}
+
+.input-wrapper {
+    position: relative;
+    width: 375px;
+    height: 57px;
+    margin: auto;
+}
+
+.input-login {
+    box-sizing: border-box;
+    color: black;
+    font-family: 'SF Pro Display', sans-serif;
+    padding: 15px 15px 15px 35px;
+    width: 100%;
+    outline: 1px solid #888b8d;
+    border: none;
+    border-radius: 10px;
+    width: 375px;
+    height: 57px;
+}
+
+.input-icon {
+    color: #191919;
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    left: 12px;
+    top: 45%;
+    transform: translateY(-50%);
+}
+
+@media (max-width: 434px) {
+    .card-login {
+        width: 100%;
+        margin: auto;
+    }
+
+    .input-wrapper {
+        width: 100%;
+    }
+
+    .input-login {
+        width: 98%;
+    }
+
+    .btn-login {
+        width: 98%;
+    }
+}
+
+@media (max-heigth: 608px) {
+    .card-login {
+        height: 100vh;
+    }
+
+}

@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="es_mx">
+    <head>
+        <meta name="author" content="Juan Carlos Muñoz Luna" />
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="user-scalable=no,width=device-width" />
+
+        <title>Competencias</title>
+        <link rel="shortcut icon" type="image/x-icon" href="<?php echo $this->url->get('img/favicon.ico'); ?>" />
+
+        <script type="text/javascript">
+            var base_url = "<?php echo $this->url->getBaseUri(); ?>";
+            var hoy = "<?php echo date('d-m-Y') ?>";
+            var usuario = "<?php echo $this->session->get('usuario'); ?>";
+            var usuario_id = "<?php echo $this->session->get('usuario_id'); ?>";
+            
+        </script> 
+
+        <?php
+        $this->assets->outputCss();
+        ?>
+
+    </head>
+
+
+
+    <body>
+
+
+        <iframe id="xframe"></iframe>
+
+
+        <div class="wrapper">
+            <!--sidebar-wrapper-->
+            <div class="sidebar-wrapper" data-simplebar="true">
+                <div class="sidebar-header">
+<div class="">
+                        <img src="/img/icono.png" alt="Logo_app" class="logo-icon-2" />
+                    </div>
+                    <div>
+                        
+                        <h4 class="logo-text" style="font-family: rift, sans-serif; font-weight: 700; font-style: normal; font-size: 30px;"> Competencias</h4>
+                    </div>
+                    <a href="javascript:;" class="toggle-btn ms-auto"> <i class="fa-solid fa-bars"></i>
+                    </a>
+                </div>
+                <!--navigation-->
+
+
+
+                <ul class="metismenu" id="menu">
+
+
+
+
+
+
+
+
+                    <?php
+                    
+                           
+                    
+                    
+                    if (isset($menu))
+                        foreach ($menu as $m) {
+                            $url = $this->url->get($m->url);
+                            $hassm = count($submenu[$m->id]) > 0;
+                            $li = '<a href="' . $url . '">
+						<div class="parent-icon icon-menu"><i class="' . $m->icono . '"></i>
+						</div>
+						<div class="menu-title">' . $m->nombre . '</div>
+					</a>';
+
+                            if ($hassm)
+                                $li = '<a href="javascript:;" class="has-arrow">
+                            <div class="parent-icon icon-menu"><i class="' . $m->icono . '"></i>
+                            </div>
+                            <div class="menu-title">' . $m->nombre . '</div>
+                        </a>';
+
+                            echo '<li>' . $li;
+                            if ($hassm) {
+                                echo '<ul>';
+                                foreach ($submenu[$m->id] as $sm) {
+                                    echo '<li><a href="' . $this->url->get($sm->url) . '"><i class="' . $sm->icono . '"></i>' . $sm->nombre . '</a></li>';
+                                }
+                                echo '</ul>';
+                            }
+                            echo '</li>';
+                        }
+                    ?>
+
+                   
+                        
+
+
+                </ul>
+
+
+
+
+
+
+
+
+
+
+
+
+                <!--end navigation-->
+            </div>
+            <!--end sidebar-wrapper-->
+            <!--header-->
+            <header class="top-header">
+
+
+                <nav class="navbar navbar-expand">
+                    <div class="left-topbar d-flex align-items-center">
+                        <a href="javascript:;" class="toggle-btn">	<i class="fa-solid fa-bars"></i>
+                        </a>
+                    </div>
+
+
+
+
+
+
+
+
+                    <div class="right-topbar ms-auto">
+                        <ul class="navbar-nav">
+                            
+                            
+                            
+                            <li class="nav-item dropdown dropdown-lg">
+                                <div class="d-flex user-box align-items-center">
+                                        <div class="user-info">
+                                            <select class="form-control" onchange="changePeriodo()" id="periodo_seleccionado" <?php echo ($this->session->has("usuario_nombre")?"":"disabled"); ?>>
+                                                <?php
+                                                                    foreach ($periodos as $per)
+                                                                        echo '<option value="'.$per->id.'"  data-activo="'.($per->activo?1:0).'" data-inicio="'.date('d-m-Y',strtotime($per->fecha_inicio)).'" data-fin="'.date('d-m-Y',strtotime($per->fecha_fin)).'" '.($per->activo?"selected":"").'>'.$per->nombre.($per->activo?' (Activo)':'').'</option>';
+                                                
+                                                ?>
+                                            </select>
+                                            <p class="designattion mb-0" id="rango-periodo"><?php echo date('d-m-Y',strtotime($periodo->fecha_inicio))." - ".date('d-m-Y',strtotime($periodo->fecha_fin));  ?></p>
+                                        </div>
+                                    </div>
+                            </li>
+                            
+<li class="nav-item dropdown dropdown-user-profile">
+                                
+                                    <div class="d-flex user-box align-items-center">
+                                        <div class="user-info">
+                                            <p class="user-name mb-0"  id="_usuario_nombre"><?php echo $this->session->get("usuario_nombre"); ?></p>
+                                            <p class="designattion mb-0" id="_usuario_nombre_rol"><?php echo $this->session->get("usuario_tipo"); ?></p>
+                                        </div>
+                                        <img src="https://<?php echo $this->config->url->archivos ?>.mondragonmexico.edu.mx/usuarios/1/avatar.png" class="user-img" alt="user avatar">
+                                    </div>
+                                
+
+                            </li>
+
+                            <li class="nav-item dropdown dropdown-lg">
+
+                                <span>
+
+                                    <input
+                                        id="navigation-panel-input"
+                                        type="checkbox"
+                                        name="navigation-panel"
+                                        class="navigation-panel-input hidden-checkbox"
+                                        />
+                                    <label
+                                        for="navigation-panel-input"
+                                        class="navigation-panel-label"
+
+                                        >
+                                        <span class="nav-link position-relative"><a href="/index/logout" <i class="fa-solid fa-right-from-bracket" title="Cerrar Sesión"></i></a></span>
+                                    </label>
+                                    
+
+                                </span>
+                            </li>
+                            
+
+                        </ul>
+                    </div>
+                </nav>
+            </header>
+            <!--end header-->
+            <!--page-wrapper-->
+            <div class="page-wrapper">
+                <!--page-content-wrapper-->
+                <div class="page-content-wrapper">
+                    <div class="page-content">
+                        <div id="contenedor">
+
+
+
+
+                            <div><?php $this->flash->output() ?></div>
+
+                            <?php echo $this->getContent(); ?>
+
+
+
+                            <div class="modal fade" id="dialog-confirm" tabindex="-1" aria-hidden="true">
+                                <div class="modal-dialog modal-dialog-centered">
+                                    <div class="modal-content">
+                                        <div class="modal-header bg-primary">
+                                            <h5 class="modal-title text-white"></h5>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body"></div>
+                                        <div class="modal-footer">
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+                </div>
+                <!--end page-content-wrapper-->
+            </div>
+            <!--end page-wrapper-->
+            <!--start overlay-->
+            <div class="overlay toggle-btn-mobile"></div>
+            <!--end overlay-->
+            <!--Start Back To Top Button--> <a href="javaScript:;" class="back-to-top"><i class="fa-solid fa-arrow-up"></i></a>
+            <!--End Back To Top Button-->
+            <!--footer -->
+            <div class="footer">
+                <p class="mb-0"><img src="/img/logo_icon.png" class="logo-icon-2" alt=""> Universidad Mondragón <?php echo date('Y') ?>
+                </p>
+            </div>
+            <!-- end footer -->
+        </div>
+        <!-- end wrapper -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        <?php
+        $this->assets->outputJs();
+        ?>
+
+
+       
+
+
+
+    </body>
+</html>

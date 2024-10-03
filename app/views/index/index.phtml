@@ -1,0 +1,76 @@
+<section class="vh-100 gradient-custom">
+        <div class="container py-5 h-100">
+            <div class="row d-flex justify-content-center align-items-center h-100">
+                <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+                    <div class="card card-login bg-white" style="border-radius: 1rem;height: 500px;">
+                        <div class="card-login-body text-center">
+                            <img id="logo-login"
+                                src="/img/logo.png" alt="logo_mondragon">
+                            <form id="form-login" action="" method="post" class="needs-validation" novalidate>
+                                <div class="input-wrapper mt-4">
+                                    <input type="email" id="usuario" class="form-control input-login" name="username"
+                                        placeholder="Correo electrónico" required>
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="input-icon"
+                                        viewBox="0 0 16 16">
+                                        <path
+                                            d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z" />
+                                    </svg>
+                                    <div class="invalid-feedback text-start">
+                                        Escriba un correo electrónico valido
+                                    </div>
+                                </div>
+                                <div class="input-wrapper mt-5 mb-4">
+                                    <input type="password" id="password" class="input-login form-control" name="password" placeholder="Contraseña"
+                                        required>
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor"
+                                        class="input-icon key-input" viewBox="0 0 16 16">
+                                        <path
+                                            d="M3.5 11.5a3.5 3.5 0 1 1 3.163-5H14L15.5 8 14 9.5l-1-1-1 1-1-1-1 1-1-1-1 1H6.663a3.5 3.5 0 0 1-3.163 2zM2.5 9a1 1 0 1 0 0-2 1 1 0 0 0 0 2z" />
+                                    </svg>
+                                    <div class="invalid-feedback text-start">
+                                        Debe introducir una contraseña
+                                    </div>
+                                </div>
+                                <button class="btn btn-login mt-3" type="button" onclick="login()">Iniciar Sesión</button>
+                                
+                                <button class="btn btn-reset mt-3" type="button" onclick="showReset()">¿Olvidaste tu contraseña?</button>
+                                
+                                
+                                
+                                
+                                
+                            </form>
+                            <form id="form-reset" action="" method="post" class="needs-validation" novalidate style="display: none;">
+                                <h6 class="label_pass mb-5">Recuperar contraseña</h6>
+                                <div class="input-wrapper mt-4">
+                                    <input id="email" type="email" class="form-control input-login" name="email"
+                                        placeholder="Correo electrónico" required>
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="input-icon"
+                                        viewBox="0 0 16 16">
+                                        <path
+                                            d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z" />
+                                    </svg>
+                                    <div class="invalid-feedback text-start">
+                                        Escriba un correo electrónico valido
+                                    </div>
+                                </div>
+                                <button class="btn btn-login mt-5" type="button" onclick="recuperar()">Recuperar Contraseña</button>
+                                
+                                <button class="btn btn-reset mt-5" type="button" onclick="showLogin()">Regresar</button>
+                                
+                            </form>
+
+                        </div>
+                    </div>
+                    <div class="mt-3">
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+<section id="overlay" aria-hidden="true">
+    <div class="spinner-border color-mondragon" style="width: 6rem; height: 6rem;" role="status"> <span class="visually-hidden">Loading...</span>								</div>
+</section>

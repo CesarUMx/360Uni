@@ -1,0 +1,8 @@
+.seccion-preguntas {
+    cursor: pointer;
+}
+
+
+.active .card{
+    background-color: #ff4d0066;
+}

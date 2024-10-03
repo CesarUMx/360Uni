@@ -1,0 +1,172 @@
+<div class="row">
+    <div class="col-12 col-lg-2">
+        <div class="card radius-15 bg-info">
+            <div class="card-body text-center">
+                <div class="widgets-icons mx-auto rounded-circle bg-white"><i class="fas fa-user-graduate"></i>
+                </div>
+                <h4 class="mb-0 font-weight-bold mt-3 text-white" id="indicador_alumno">0</h4>
+                <p class="mb-0 text-white">Alumnos</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-12 col-lg-2">
+        <div class="card radius-15 bg-wall">
+            <div class="card-body text-center">
+                <div class="widgets-icons mx-auto bg-white rounded-circle"><i class="fas fa-users-line"></i>
+                </div>
+                <h4 class="mb-0 font-weight-bold mt-3 text-white" id="indicador_director">0</h4>
+                <p class="mb-0 text-white">Directores</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-12 col-lg-2">
+        <div class="card radius-15 bg-rose">
+            <div class="card-body text-center">
+                <div class="widgets-icons mx-auto bg-white rounded-circle"><i class="fas fa-users-gear"></i>
+                </div>
+                <h4 class="mb-0 font-weight-bold mt-3 text-white" id="indicador_administrador">0</h4>
+                <p class="mb-0 text-white">Administradores</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-12 col-lg-2">
+        <div class="card radius-15">
+            <div class="card-body text-center">
+                <div class="widgets-icons mx-auto bg-light-primary text-primary rounded-circle"><i class="fas fa-book"></i>
+                </div>
+                <h4 class="mb-0 font-weight-bold mt-3" id="indicador_carrera">0</h4>
+                <p class="mb-0">Carreras</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-12 col-lg-2">
+        <div class="card radius-15">
+            <div class="card-body text-center">
+                <div class="widgets-icons mx-auto bg-light-success text-success rounded-circle"><i class="fas fa-bookmark"></i>
+                </div>
+                <h4 class="mb-0 font-weight-bold mt-3" id="indicador_funcionesp">0</h4>
+                <p class="mb-0">Funciones Profesionales</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-12 col-lg-2">
+        <div class="card radius-15">
+            <div class="card-body text-center">
+                <div class="widgets-icons mx-auto bg-light-warning text-warning rounded-circle"><i class="fas fa-question"></i>
+                </div>
+                <h4 class="mb-0 font-weight-bold mt-3" id="indicador_competencia">0</h4>
+                <p class="mb-0">Competencias</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<div class="row">
+    <div class="col col-lg-6">
+        <div class="card radius-15">
+            <div class="card-body">
+                <div class="card-title">
+                    <h5 class="mb-0">Enviar Evaluaciones</h5>
+                </div>
+                <hr/>
+
+                <div class="card radius-15 bg-warning">
+                    <div class="card-body text-center">
+                        <div class="widgets-icons mx-auto rounded-circle bg-white"><i class="fas fa-envelope"></i>
+                        </div>
+                        <h4 class="mb-0 font-weight-bold mt-3 text-white" id="indicador_pendientes">0</h4>
+                        <p class="mb-0 text-white">Encuestas pendientes</p>
+                        
+
+                        <div class="progress d-none">
+                            <div id="progress_envios" class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" style="width: 0%;" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+                        </div>
+                        <br/>
+                        
+                        
+                        <button class="btn btn-primary" id="btn_startN" onclick="iniciaNotificaciones()">Enviar Notificaciones</button>
+                        <button class="btn btn-secondary d-none" id="btn_stopN"  onclick="stopNotificaciones()">Detener Notificaciones</button>
+
+
+                    </div>
+                </div>
+
+
+
+
+
+            </div>
+        </div>
+    </div>
+    
+    
+    
+    
+    <div class="col col-lg-6">
+        <div class="card radius-15">
+            <div class="card-body">
+                <div class="card-title">
+                    <h5 class="mb-0">Enviar Invitaciones</h5>
+                </div>
+                <hr/>
+
+                <div class="card radius-15 bg-info">
+                    <div class="card-body text-center">
+                        <div class="widgets-icons mx-auto rounded-circle bg-white"><i class="fas fa-envelope"></i>
+                        </div>
+                        <h4 class="mb-0 font-weight-bold mt-3 text-white" id="indicador_invitaciones">0</h4>
+                        <p class="mb-0 text-white">Invitaciones Pendientes</p>
+                        
+
+                        <div class="progress d-none">
+                            <div id="progress_invitaciones" class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" style="width: 0%;" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+                        </div>
+                        <br/>
+                        
+                        
+                        <button class="btn btn-primary" id="btn_startI" onclick="iniciaInvitaciones()">Enviar Invitaciones</button>
+                        <button class="btn btn-secondary d-none" id="btn_stopI"  onclick="stopInvitaciones()">Detener Invitaciones</button>
+
+
+                    </div>
+                </div>
+
+
+
+
+
+            </div>
+        </div>
+    </div>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</div>
+
+
+
+
+
+

@@ -1,0 +1,117 @@
+<div class="row">
+    <div class="panel-body col-lg-4 col-sm-4 center"></div>
+
+<div class="panel-body col-lg-4 col-sm-4 center">
+    <div class="input-group">
+        <div class="input-group-prepend"><span class="input-group-text"><i class="fa fa-table"></i></span></div>
+        <span id="cont-catalogos"></span>
+    </div>
+</div>
+    
+    
+</div>
+<br/>
+<table id="catalogo"></table> 
+<div id="paginador"></div>
+
+
+<script type="text/javascript">
+    
+    
+    window.addEventListener('load', function() {
+<?php
+if (isset($colmodel) && $colmodel != false) {
+    ?>
+    
+        
+      
+       
+        $("#catalogo").jqGrid({
+            url: "<?php echo $this->url->get("ajax/getCatalogo/" . $catalogo) ?>",
+            editurl: "<?php echo $this->url->get("ajax/gestionaCatalogo/" . $catalogo) ?>",
+            datatype: "json",
+            loadonce: false,
+            mtype: "POST",
+            colModel: <?php echo $colmodel ?>,
+            pager: "#paginador",
+            shrinkToFit: true,
+            multiselect: false,
+            multiSort : true,
+            rowNum: 100,
+            rowList: [100, 200,500],
+            viewrecords: true,
+            hidegrid: false,
+            gridview: true,
+            rownumbers: true,
+            sortname: "id",
+            sortorder: "asc",
+            autoencode: false
+        }).navGrid('#paginador',
+                // the buttons to appear on the toolbar of the grid
+                        {edit: true, add: true, del: true, search: true, refresh: true, view: false, position: "left", cloneToTop: false},
+                // options for the Edit Dialog
+                {
+                    width: 400,
+                    recreateForm: true,
+                    closeAfterEdit: true,
+                    reloadAfterSubmit: true,
+
+                    afterSubmit: afterSubmit,
+                    errorTextFormat: errorTextFormat
+                },
+                // options for the Add Dialog
+                {
+                    closeAfterAdd: true,
+                    width: 400,
+                    modal: true,
+                    recreateForm: true,
+                    reloadAfterSubmit: true,
+
+                    afterSubmit: afterSubmit,
+                    errorTextFormat: errorTextFormat
+                },
+                // options for the Delete Dailog
+                {
+                    width: 300,
+                    afterSubmit: afterSubmit,
+                    errorTextFormat: errorTextFormat
+                },
+                {
+                    multipleSearch: false, multipleGroup: false, showQuery: false,
+                    sopt: ['eq', 'bw', 'cn', 'ew']
+                });
+                $('#paginador_left').css('width', 'auto');
+
+
+                $(window).on("load", redraw_grid);
+                $(window).on("resize", redraw_grid);
+                redraw_grid();
+
+
+
+var funcion="beforeShowForm_<?php echo $catalogo?>";
+
+if (typeof window[funcion] === 'function') {
+    $.extend($.jgrid.edit, {
+    beforeSubmit : funcion
+});
+
+$.extend($.jgrid.add, {
+    beforeSubmit : funcion
+});
+
+}
+ <?php
+}
+?>
+
+
+
+
+});
+
+function change_catalogos() {
+    document.location.href="<?php echo $this->url->get("admin/catalogos/") ?>"+$("#catalogos").val();
+}
+    </script>
+   

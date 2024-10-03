@@ -1,0 +1,33 @@
+<div class="row">
+    <div class="col-12 col-lg-4"></div>
+    <div class="col-12 col-lg-4"><span id="contenedor-carreras"></span></div>
+</div>
+<br/>
+
+
+<div class="row">
+    
+    <?php
+    $total=$secciones->count();
+    $div=12/$total;
+
+    foreach ($secciones as $seccion)
+        echo '<div class="col-12 col-lg-'.$div.' seccion-preguntas" data-seccion="'.$seccion->id.'">
+        <div class="card radius-15">
+            <div class="card-body text-center">
+                <div class="widgets-icons mx-auto rounded-circle bg-white bg-light-'.$seccion->clase.' text-'.$seccion->clase.'" ><i class="fas fa-question"></i>
+                </div>
+                <h4 class="mb-0 font-weight-bold mt-3" id="seccion_'.$seccion->id.'">0</h4>
+                <p class="mb-0">'.(($seccion->global)?'<i class="fa-solid fa-globe"></i>':"")." ".$seccion->nombre.'</p>
+            </div>
+        </div>
+    </div>';
+    
+    
+    ?>
+
+</div>
+
+
+<table id="list_preguntas"></table>
+<div id="pager_preguntas"></div>

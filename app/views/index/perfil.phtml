@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="es_mx">
+    <head>
+        <meta name="author" content="Juan Carlos Muñoz Luna" />
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="user-scalable=no,width=device-width" />
+
+        <title>Mi Perfil - <?php echo $this->session->get('displayname'); ?></title>
+        <link rel="shortcut icon" type="image/x-icon" href="<?php echo $this->url->get('img/favicon.ico'); ?>" />
+
+        <script type="text/javascript">
+            var base_url = "<?php echo $this->url->getBaseUri(); ?>";
+
+        </script> 
+
+        <?php
+        $this->assets->outputCss();
+        ?>
+
+    </head>
+
+
+
+    <body>
+
+
+
+
+
+        <div class="wrapper">
+            <!--sidebar-wrapper-->
+
+            <!--end sidebar-wrapper-->
+            <!--header-->
+
+            <!--end header-->
+            <!--page-wrapper-->
+
+
+
+            <div class="page-wrapper" style="margin-top: 0px;">
+                <!--page-content-wrapper-->
+                <div class="page-content-wrapper" style="margin: 0;">
+                    <div class="page-content" style="margin: 0 auto; width: 100%; max-width: 950px;">
+                        <!--breadcrumb-->
+
+                        <!--end breadcrumb-->
+                        <div class="user-profile-page">
+                            <div class="card radius-15">
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-12 col-lg-7 border-right">
+                                            <div class="d-md-flex align-items-center">
+                                                <div class="mb-md-0 mb-3">
+                                                    <img src="https://archivos.mondragonmexico.edu.mx/usuarios/<?php echo $this->session->get("usuario_id") ?>/avatar.png" class="rounded-circle shadow" width="130" height="130" alt="" />
+                                                </div>
+                                                <div class="ms-md-4 flex-grow-1">
+                                                    <div class="d-flex align-items-center mb-1">
+                                                        <h4 class="mb-0"><?php echo $this->session->get('usuario_nombre'); ?></h4>
+
+                                                    </div>
+                                                    <p class="mb-0 text-muted"><?php echo $this->session->get('usuario_tipo'); ?></p>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-12 col-lg-5">
+                                            <table class="table table-sm table-borderless mt-md-0 mt-3">
+                                                <tbody>
+                                                    <tr>
+                                                        <th>Fecha de Registro:</th>
+                                                        <td><?php //create-at ?></span>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th>Edad:</th>
+                                                        <td><?php
+                                                            $date1 = new DateTime(date("Y-m-d"));
+                                                            $date2 = new DateTime("2015-02-14"); //fcha nac
+                                                            $diff = $date1->diff($date2);
+                                                            echo $diff->y;
+                                                            ?>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th>Location:</th>
+                                                        <td>Sankt, Petersburg, Russia</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th>Years experience:</th>
+                                                        <td>6</td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                            <div class="mb-3 mb-lg-0">
+                                                <a href="javascript:;" class="btn btn-sm btn-link"><i class='bx bxl-github'></i></a>
+                                                <a href="javascript:;" class="btn btn-sm btn-link"><i class='bx bxl-twitter'></i></a>
+                                                <a href="javascript:;" class="btn btn-sm btn-link"><i class='bx bxl-facebook'></i></a>
+                                                <a href="javascript:;" class="btn btn-sm btn-link"><i class='bx bxl-linkedin'></i></a>
+                                                <a href="javascript:;" class="btn btn-sm btn-link"><i class='bx bxl-dribbble'></i></a>
+                                                <a href="javascript:;" class="btn btn-sm btn-link"><i class='bx bxl-stack-overflow'></i></a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!--end row-->
+                                    <ul class="nav nav-pills">
+                                        <li class="nav-item"> <a class="nav-link active" data-bs-toggle="tab" href="#Edit-Profile"><span class="p-tab-name">Generales</span><i class='bx bx-message-edit font-24 d-sm-none'></i></a>
+                                        </li>
+
+                                        <li class="nav-item"> <a class="nav-link" data-bs-toggle="tab" href="#Experience"><span class="p-tab-name">Alumno</span><i class='bx bx-donate-blood font-24 d-sm-none'></i></a>
+                                        </li>
+                                        <li class="nav-item"> <a class="nav-link" id="profile-tab" data-bs-toggle="tab" href="#Biography"><span class="p-tab-name">Académico</span><i class='bx bxs-user-rectangle font-24 d-sm-none'></i></a>
+                                        </li>
+
+                                        <li class="nav-item"> <a class="nav-link" id="profile-tab" data-bs-toggle="tab" href="#Biography2"><span class="p-tab-name">Administrativo</span><i class='bx bxs-user-rectangle font-24 d-sm-none'></i></a>
+                                        </li>
+
+                                        <li class="nav-item"> <a class="nav-link" id="profile-tab" data-bs-toggle="tab" href="#Biography2"><span class="p-tab-name">Biométricos</span><i class='bx bxs-user-rectangle font-24 d-sm-none'></i></a>
+                                        </li>
+
+                                        <li class="nav-item"> <a class="nav-link" id="profile-tab" data-bs-toggle="tab" href="#Biography2"><span class="p-tab-name">Archivos</span><i class='bx bxs-user-rectangle font-24 d-sm-none'></i></a>
+                                        </li>
+
+                                    </ul>
+                                    <div class="tab-content mt-3">
+                                        <div class="tab-pane fade show active" id="Edit-Profile">
+                                            <div class="card shadow-none border mb-0 radius-15">
+                                                <div class="card-body">
+                                                    <div class="form-body">
+                                                        <div class="row">
+                                                            <div class="col-12 col-lg-5 border-right">
+                                                                <form class="row g-3">
+                                                                    <div class="col-6">
+                                                                        <label class="form-label">Nombre(s)</label>
+                                                                        <input type="text" value="Svetlana" class="form-control">
+                                                                    </div>
+
+                                                                    <div class="col-6">
+                                                                        <label class="form-label">Apellido(s)</label>
+                                                                        <input type="text" value="Svetlana" class="form-control">
+                                                                    </div>
+
+
+                                                                    <div class="col-12">
+                                                                        <label class="form-label">Email (contacto)</label>
+                                                                        <input type="text" value="svetlana1997@example.com" class="form-control">
+                                                                    </div>
+                                                                    <div class="col-12">
+                                                                        <label class="form-label">Teléfono</label>
+                                                                        <input type="text" value="99-10-XXX-XXX" class="form-control">
+                                                                    </div>
+
+
+                                                                </form>
+                                                            </div>
+                                                            <div class="col-12 col-lg-7">
+                                                                <form class="row g-3">
+                                                                    <div class="col-12">
+                                                                        <label class="form-label">Género</label>
+                                                                        <select class="form-control">
+                                                                            <option>Hombre</option>
+                                                                            <option>Mujer</option>
+                                                                            <option>Otro</option>
+                                                                        </select>
+                                                                    </div>
+
+
+                                                                    <div class="col-12 col-lg-4">
+                                                                        <label class="form-label">Fecha de Nacimiento</label>
+                                                                        <select class="form-control">
+                                                                            <option>Enero</option>
+                                                                            <option>Febrero</option>
+                                                                            <option selected>Marzo</option>
+                                                                            <option>Abril</option>
+                                                                            <option>Mayo</option>
+                                                                            <option>Junio</option>
+                                                                            <option>Julio</option>
+                                                                            <option>Agosto</option>
+                                                                            <option>Septiembre</option>
+                                                                            <option>Octubre</option>
+                                                                            <option>Noviembre</option>
+                                                                            <option>Diciembre</option>
+                                                                        </select>
+                                                                    </div>
+                                                                    <div class="col-12 col-lg-4">
+                                                                        <label class="form-label">&nbsp;</label>
+                                                                        <select class="form-control">
+                                                                            <option>01</option>
+                                                                            <option>02</option>
+                                                                            <option>03</option>
+                                                                            <option>04</option>
+                                                                            <option>05</option>
+                                                                            <option>06</option>
+                                                                            <option>07</option>
+                                                                            <option>08</option>
+                                                                            <option>09</option>
+                                                                            <option selected>10</option>
+                                                                            <option>11</option>
+                                                                            <option>12</option>
+                                                                            <option>13</option>
+                                                                            <option>14</option>
+                                                                            <option>15</option>
+                                                                            <option>16</option>
+                                                                            <option>17</option>
+                                                                            <option>18</option>
+                                                                            <option>19</option>
+                                                                            <option>20</option>
+                                                                            <option>21</option>
+                                                                            <option>22</option>
+                                                                            <option>23</option>
+                                                                            <option>24</option>
+                                                                            <option>25</option>
+                                                                            <option>26</option>
+                                                                            <option>27</option>
+                                                                            <option>28</option>
+                                                                            <option>29</option>
+                                                                            <option>30</option>
+                                                                            <option>31</option>
+                                                                        </select>
+                                                                    </div>
+                                                                    <div class="col-12 col-lg-4">
+                                                                        <label class="form-label">&nbsp;</label>
+                                                                        <select class="form-control">
+<?php
+for ($i = 1950; $i < date('Y') - 5; $i++)
+    echo '<option value="' . $i . '">' . $i . '</option>';
+?>
+                                                                        </select>
+                                                                    </div>
+                                                                    <div class="col-12">
+                                                                        <label class="form-label">Dirección</label>
+                                                                        <input type="text" value="116-B, Cutela Colony, Sydney, Australia" class="form-control">
+                                                                    </div>
+
+
+                                                                </form>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+
+                                        <div class="tab-pane fade" id="Experience">
+                                            <div class="card shadow-none border mb-0 radius-15">
+                                                <div class="card-body">
+                                                    <div class="d-sm-flex align-items-center mb-3">
+                                                        <h4 class="mb-0">Job Experience</h4>
+                                                        <p class="mb-0 ms-sm-3 text-muted">3 Job History</p> <a href="javascript:;" class="btn btn-primary ms-auto radius-10"><i class='bx bx-plus'></i> Add More</a>
+                                                    </div>
+                                                    <div class="d-flex"> <i class='bx bxl-dribbble media-icons bg-dribbble'></i>
+                                                        <div class="ms-3">
+                                                            <div class="row align-items-center">
+                                                                <div class="col-lg-4">
+                                                                    <h5 class="mb-0">Graphic Designer</h5>
+                                                                    <p class="mb-0">Dribbble Inc</p>
+                                                                </div>
+                                                                <div class="col-lg-4">
+                                                                    <h5 class="text-muted mb-0"><i class='bx bx-time'></i> Feb-2017-Dec-2017</h5>
+                                                                </div>
+                                                                <div class="col-lg-4">
+                                                                    <h5 class="text-muted mb-0"><i class='bx bxs-map'></i> New York, USA</h5>
+                                                                </div>
+                                                            </div>
+                                                            <p class="mt-2">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing.</p>
+                                                            <h6>Media Files(2)</h6>
+                                                            <div class="row g-3">
+                                                                <div class="col-12 col-lg-3">
+                                                                    <img src="assets/images/gallery/35.jpg" class="img-thumbnail" alt="">
+                                                                </div>
+                                                                <div class="col-12 col-lg-3">
+                                                                    <img src="assets/images/gallery/36.jpg" class="img-thumbnail" alt="">
+                                                                </div>
+                                                                <div class="col-12 col-lg-3">
+                                                                    <img src="assets/images/gallery/37.jpg" class="img-thumbnail" alt="">
+                                                                </div>
+                                                                <div class="col-12 col-lg-3">
+                                                                    <img src="assets/images/gallery/38.jpg" class="img-thumbnail" alt="">
+                                                                </div>
+                                                            </div>
+                                                            <hr/>
+                                                        </div>
+                                                    </div>
+                                                    <div class="d-flex"> <i class='bx bxs-diamond media-icons bg-warning'></i>
+                                                        <div class="ms-3">
+                                                            <div class="row align-items-center">
+                                                                <div class="col-lg-4">
+                                                                    <h5 class="mb-0">Lead Designer</h5>
+                                                                    <p class="mb-0">Sketch App</p>
+                                                                </div>
+                                                                <div class="col-lg-4">
+                                                                    <h5 class="text-muted mb-0"><i class='bx bx-time'></i> Apr-2011-Sep-2013</h5>
+                                                                </div>
+                                                                <div class="col-lg-4">
+                                                                    <h5 class="text-muted mb-0"><i class='bx bxs-map'></i> Sydney, Australia</h5>
+                                                                </div>
+                                                            </div>
+                                                            <p class="mt-2">It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy.</p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="tab-pane fade" id="Biography">
+                                            <div class="row">
+                                                <div class="col-lg-4">
+                                                    <div class="card shadow-none border mb-0">
+                                                        <div class="card-body">
+                                                            <h5 class="">Websites</h5>
+                                                        </div>
+                                                        <ul class="list-group list-group-flush">
+                                                            <li class="list-group-item">
+                                                                <p class="mb-0"><i class='bx bx-globe me-1'></i> Website: <a href="javascript:;">svetlananyukova.com</a>
+                                                                </p>
+                                                            </li>
+                                                            <li class="list-group-item">
+                                                                <p class="mb-0"><i class='bx bxl-blogger me-1'></i> Blog: <a href="javascript:;">blog.svetlananyukova.com</a>
+                                                                </p>
+                                                            </li>
+                                                            <li class="list-group-item">
+                                                                <p class="mb-0"><i class='bx bx-images me-1'></i> Portfolio: <a href="javascript:;">svetlananyukova.com/portfolio</a>
+                                                                </p>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-8">
+                                                    <div class="card shadow-none border mb-0 radius-15">
+                                                        <div class="card-body">
+                                                            <h5 class="mb-3">About</h5>
+                                                            <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary, making this the first true generator on the Internet. It uses a dictionary of over 200 Latin words, combined with a handful of model sentence structures, to generate Lorem Ipsum which looks reasonable.</p>
+                                                            <hr>
+                                                            <h5 class="mb-3">Skills</h5>
+                                                            <div class="chip">UI Development <span class="closebtn" onclick="this.parentElement.style.display = 'none'">×</span>
+                                                            </div>
+                                                            <div class="chip">android <span class="closebtn" onclick="this.parentElement.style.display = 'none'">×</span>
+                                                            </div>
+                                                            <div class="chip">iOS <span class="closebtn" onclick="this.parentElement.style.display = 'none'">×</span>
+                                                            </div>
+                                                            <div class="chip">python <span class="closebtn" onclick="this.parentElement.style.display = 'none'">×</span>
+                                                            </div>
+                                                            <div class="chip">javascript <span class="closebtn" onclick="this.parentElement.style.display = 'none'">×</span>
+                                                            </div>
+                                                            <div class="chip">sketch <span class="closebtn" onclick="this.parentElement.style.display = 'none'">×</span>
+                                                            </div>
+                                                            <div class="chip">photoshop <span class="closebtn" onclick="this.parentElement.style.display = 'none'">×</span>
+                                                            </div>
+                                                            <div class="chip">Html5 <span class="closebtn" onclick="this.parentElement.style.display = 'none'">×</span>
+                                                            </div>
+                                                            <div class="chip">bootstrap4 <span class="closebtn" onclick="this.parentElement.style.display = 'none'">×</span>
+                                                            </div>
+                                                            <div class="chip">jQuery <span class="closebtn" onclick="this.parentElement.style.display = 'none'">×</span>
+                                                            </div>
+                                                            <div class="chip">php Development <span class="closebtn" onclick="this.parentElement.style.display = 'none'">×</span>
+                                                            </div>
+                                                            <div class="chip">ms excel <span class="closebtn" onclick="this.parentElement.style.display = 'none'">×</span>
+                                                            </div>
+                                                            <div class="chip">programming <span class="closebtn" onclick="this.parentElement.style.display = 'none'">×</span>
+                                                            </div>
+                                                            <h5 class="mb-3">Language</h5>
+                                                            <hr>
+                                                            <ul class="list-inline mb-0">
+                                                                <li class="list-inline-item"><i class="flag-icon flag-icon-um me-2"></i><span>English</span>
+                                                                </li>
+                                                                <li class="list-inline-item"><i class="flag-icon flag-icon-fr me-2"></i><span>French</span>
+                                                                </li>
+                                                                <li class="list-inline-item"><i class="flag-icon flag-icon-de me-2"></i><span>German</span>
+                                                                </li>
+                                                            </ul>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--end page-content-wrapper-->
+            </div>
+
+
+
+
+
+
+
+
+        </div>
+
+
+        <!--end page-content-wrapper-->
+
+        <!--end page-wrapper-->
+        <!--start overlay-->
+        <div class="overlay toggle-btn-mobile"></div>
+        <!--end overlay-->
+        <!--Start Back To Top Button--> <a href="javaScript:;" class="back-to-top"><i class="fa-solid fa-arrow-up"></i></a>
+        <!--End Back To Top Button-->
+        <!--footer -->
+        <div class="footer" style="margin: 0">
+            <p class="mb-0"><img src="/img/logo_icon.png" class="logo-icon-2" alt=""> Universidad Mondragon 2022
+            </p>
+        </div>
+        <!-- end footer -->
+    </div>
+    <!-- end wrapper -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<?php
+$this->assets->outputJs();
+?>
+
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

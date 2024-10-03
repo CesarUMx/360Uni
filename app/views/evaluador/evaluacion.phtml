@@ -1,0 +1,214 @@
+<?php
+if (!isset($respuestas)) {
+    ?>
+
+    <div class="row">
+
+
+        <div class="col-12 col-lg-8 mx-auto">
+            <div class="card radius-15">
+                <div class="card-body">
+                    <div class="card-title">
+                        <h5 class="mb-0">Evaluación de Competencias</h5>
+                    </div>
+                    <hr>
+                    <p>Por favor complete el siguiente formulario</p>
+                </div>
+            </div>
+        </div></div>
+
+
+    <?php
+}
+if (isset($secciones)) {
+    foreach ($secciones as $seccion) {
+        echo '    <div class="row">
+        
+
+
+
+
+
+
+        <div class="col-12 col-lg-8 mx-auto">
+        
+
+
+
+
+            <div class="card radius-15">
+
+                <div class="card-header bg-' . $seccion->clase . ' text-white sticky-top" style="height:70px;">
+                    ' . $seccion->nombre . '
+                        
+
+<div class="progress">
+                <div id="progress_seccion' . $seccion->id . '" class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" style="width: 0%;" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">0%</div>
+            </div>
+                </div>
+
+
+
+
+                <div class="card-body">
+
+
+                    <div>
+' . $seccion->descripcion . '
+
+                       
+                    </div>';
+
+        $preguntas = CPregunta::find(["conditions" => "id_seccion=?1", "bind" => [1 => $seccion->id], "order" => "id_categoria"]);
+
+        if (!$seccion->global)
+            //$preguntas = CPregunta::find(["conditions" => "id_seccion=?1 and semestre=?2 and id_funcionesp=?3", "bind" => [1 => $seccion->id, 2 => $da->semestre, 3 => $da->id_funcionesp], "order" => "id_categoria"]);
+                $preguntas = CPregunta::find(["conditions" => "id_seccion=?1 and id_funcionesp=?2", "bind" => [1 => $seccion->id, 2 => $da->id_funcionesp], "order" => "id_categoria"]);
+
+        $act = 0;
+
+        foreach ($preguntas as $pregunta) {
+
+
+            if ($pregunta->id_categoria != $act) {
+
+                echo "<h5 class='text-center'>" . $pregunta->CCategoria->nombre . "</h5>";
+                $act = $pregunta->id_categoria;
+            }
+
+
+            switch ($pregunta->CTipopregunta->nombre) {
+
+
+                case 'Seleccion':
+
+
+                    echo '
+
+                    <div class="d-flex align-items-center gap-3">
+
+                        <div class="b1">
+                            <h5 class="mt-0">' . $pregunta->nombre . '</h5>
+                            <small>' . $pregunta->descripcion . '</small>
+                        </div>
+
+
+
+                        <div class="b2" >
+                           
+                        <select class="pregunta form-control" id="pregunta_' . $pregunta->id . '" data-seccion="' . $seccion->id . ' disabled">
+                            <option value="" disabled selected>Sin respuesta</option>
+                            <option value="10">Excelente</option>
+                            <option value="9">Bien</option>
+                            <option value="8">Puede Mejorar</option>
+                            <option value="7">Insuficiente</option>
+                            
+                           
+                        </select>
+                           
+                        </div>
+                        
+
+                    </div>';
+                    break;
+
+                case 'Evaluado':
+
+
+                    echo '
+
+                    <div class="d-flex align-items-center gap-3">
+
+                        <div class="b1">
+                            <p class="mt-0">' . $pregunta->nombre . '</p>
+                            <small>' . $pregunta->descripcion . '</small>
+                        </div>
+
+
+
+                        <div class="b2" >
+                            <span >Sin respuesta</span>
+                        <select class="pregunta cs-select cs-skin-circular" id="pregunta_' . $pregunta->id . '" data-seccion="' . $seccion->id . '">
+                            <option value="" disabled selected>Select an activity</option>
+                            <option value="1" data-valor="Terrible" >1</option>
+                            <option value="2" data-valor="Mal">2</option>
+                            <option value="3"  data-valor="Bien">3</option>
+                            <option value="4"  data-valor="Muy Bien">4</option>
+                            <option value="5"  data-valor="Excelente">5</option>
+                           
+                        </select>
+                           
+                        </div>
+                        
+
+                    </div>';
+                    break;
+
+                default:
+                    echo '<div class="">
+                    <h5 class="mt-0">' . $pregunta->nombre . '</h5>
+
+                </div>
+
+
+
+                <textarea id="pregunta_' . $pregunta->id . '"  data-seccion="' . $seccion->id . '" placeholder="' . $pregunta->descripcion . '" class="pregunta text_pregunta"></textarea>';
+            }
+        }
+
+
+
+
+
+
+
+
+
+
+
+        echo'    
+                    
+                </div>
+            </div>
+        </div>
+    </div>';
+    }
+    
+
+
+
+
+if(!isset($respuestas)) {
+    
+?>
+
+
+
+    <div class="text-center" style="margin: 10px">
+
+
+
+
+
+
+        <button class="btn btn-primary particles-button"><i class="fas fa-save"></i> Guardar</button>
+    </div>
+
+
+
+    <section id="overlay" aria-hidden="true">
+
+        <div>Gracias</div>
+
+
+
+    </section>
+
+
+
+    <?php
+}
+else
+    echo '<script type="text/javascript">var respuestas='.$respuestas.'</script>';
+}
+

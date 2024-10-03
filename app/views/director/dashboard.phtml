@@ -1,0 +1,267 @@
+<div class="row">
+
+
+    <div class="col-12 col-lg-3">
+        <div class="card radius-15 bg-mondragon">
+            <div class="card-body text-center">
+                <div class="widgets-icons mx-auto rounded-circle bg-white"><i class="fas fa-puzzle-piece"></i>
+                </div>
+                <h4 class="mb-0 font-weight-bold mt-3 text-white" id="indicador_carreras">0</h4>
+                <p class="mb-0 text-white">Carreras</p>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="col-12 col-lg-3">
+        <div class="card radius-15 bg-info">
+            <div class="card-body text-center">
+                <div class="widgets-icons mx-auto rounded-circle bg-white"><i class="fas fa-user-graduate"></i>
+                </div>
+                <h4 class="mb-0 font-weight-bold mt-3 text-white" id="indicador_alumnos">0</h4>
+                <p class="mb-0 text-white">Alumnos</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-12 col-lg-3">
+        <div class="card radius-15 bg-wall">
+            <div class="card-body text-center">
+                <div class="widgets-icons mx-auto bg-white rounded-circle"><i class="fas fa-users-line"></i>
+                </div>
+                <h4 class="mb-0 font-weight-bold mt-3 text-white" id="indicador_asignados">0</h4>
+                <p class="mb-0 text-white">Asignados</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-12 col-lg-3">
+        <div class="card radius-15 bg-warning">
+            <div class="card-body text-center">
+                <div class="widgets-icons mx-auto bg-white rounded-circle"><i class="fas fa-users-gear"></i>
+                </div>
+                <h4 class="mb-0 font-weight-bold mt-3 text-white" id="indicador_pendientes">0</h4>
+                <p class="mb-0 text-white">Pendientes</p>
+            </div>
+        </div>
+    </div>
+
+
+
+</div>
+
+<div class="card radius-15">
+    <div class="card-body">
+        <div class="card-title">
+            <h5 class="mb-0">Mis Alumnos</h5>
+
+ <div class="progress">
+                <div id="progress_alumnos" class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" style="width: 0%;" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">0%</div>
+            </div>
+        </div>        
+        <hr>
+        
+<div class="row">
+    <div class="col-lg-12 col-sm-12">
+        <div class="card">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-sm-5">
+                        Alumno
+                        <div class="input-group mb-3">
+                            <span class="input-group-text"><i class="fa fa-user"></i></span>
+                            <input type="text" id="filtro_alumno" class="form-control" placeholder="Nombre del Alumno" onchange="change_filtros()"/>
+                        </div>
+
+                    </div>
+                    <div class="col-sm-2">
+                        Semestre
+                        <div class="input-group mb-3">
+                            <span class="input-group-text"><i class="fa fa-hashtag"></i></span>
+                            <input type="number" id="filtro_semestre" class="form-control" placeholder="Semestre" min="1" max="10" onchange="change_filtros()"/>
+                        </div>
+
+                    </div>
+
+
+
+                    
+
+
+
+
+
+
+                    <div class="col-sm-5">
+                        Carrera
+                        <div class="input-group mb-3">
+                            <span class="input-group-text"><i class="fa-solid fa-hashtag"></i></span>
+                            <span id="cont-filtro_carrera"></span>
+
+
+                            <button type="button" title="Limpiar Filtros" class="btn btn-mondragon" onclick="limpiaFiltros()"><i class="fas fa-eraser"></i></button>
+
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+</div>
+        
+        
+        
+
+        <table id="list_alumnos"></table>
+        <div id="pager_alumnos"></div>
+
+
+
+
+
+
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="modal fade " id="dialog_graficos" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-xl">
+        <div class="modal-content">
+            <div class="modal-header bg-mondragon2">
+                <h5 class="modal-title text-white" id="titulo_graficas">Gráficos del Alumno</h5>
+                <button type="button" class="btn-close bg-white" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col col-lg-12 mx-auto">
+
+
+
+
+                        <div class="row">
+                            <div class="col-12 col-lg-6 mx-auto">
+                                <div class="card radius-15">
+                                    <div class="card-body">
+                                        <div class="card-title">
+                                            <h5 class="mb-0">Competencias Transversales</h5>
+                                        </div>
+                                        <hr/>
+                                        <div class="chart-container2">
+                                            <canvas id="chart1"></canvas>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+
+
+                            <div class="col-12 col-lg-6 mx-auto">
+                                <div class="card radius-15">
+                                    <div class="card-body">
+                                        <div class="card-title">
+                                            <h5 class="mb-0">Competencias Disciplinarias</h5>
+                                        </div>
+                                        <hr/>
+                                        <div class="chart-container2">
+                                            <canvas id="chart2"></canvas>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+
+
+
+                            <div class="col-12 col-lg-6 mx-auto">
+                                <div class="card radius-15">
+                                    <div class="card-body">
+                                        <div class="card-title">
+                                            <h5 class="mb-0">Comparativo</h5>
+                                        </div>
+                                        <hr/>
+                                        <div class="chart-container2">
+                                            <canvas id="chart3"></canvas>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+
+
+
+                            <div class="col-12 col-lg-6 mx-auto">
+                                <div class="card radius-15">
+                                    <div class="card-body">
+                                        <div class="card-title">
+                                            <h5 class="mb-0">Comparativo</h5>
+                                        </div>
+                                        <hr/>
+                                        <table id="list_evaluaciones"></table>
+                                        <div id="pager_evaluaciones"></div>
+                                    </div>
+                                </div>
+                            </div>
+
+
+
+
+
+
+
+
+
+
+                        </div>
+
+
+
+
+
+
+
+
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

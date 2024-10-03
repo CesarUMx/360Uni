@@ -1,0 +1,114 @@
+
+<?php echo $this->getContent(); ?>
+
+
+
+<section id="overlay" aria-hidden="false">
+
+    <div id="form_completo" class="form_alumno">
+        <h2>Bienvenido Alumno</h2>
+        <p>Gracias por utilizar la nueva plataforma de evaluación, antes de continuar es necesario proporciones algo de información:</p>
+
+
+
+
+
+        <div class="row">
+            <div class="col-sm-6 col-lg-6">
+                Nombre Completo
+                <div class="input-group mb-3">
+                    <span class="input-group-text"><i class="fas fa-edit"></i></span>
+                    <input type="text" class="form-control" id="nombre_alumno" value="<?php echo $this->session->get("usuario_nombre") ?>" placeholder="Nombre completo"/>
+                </div>
+            </div>
+
+
+
+            <div class="col-sm-6 col-lg-6">
+                Carrera
+                <div class="input-group mb-3">
+                    <span class="input-group-text"><i class="fas fa-edit"></i></span>
+                    <span id="cont-carreras"></span>
+                </div>
+            </div>
+
+
+
+
+
+        </div>
+
+
+        <div class="row">
+
+
+
+
+
+            <div class="col-sm-6 col-lg-6">
+                Funciones Profesionales
+                <div class="input-group mb-3">
+                    <span class="input-group-text"><i class="fas fa-edit"></i></span>
+                    <span id="cont-funcionesp"></span>
+                </div>
+            </div>
+
+
+            <div class="col-lg-6 col-sm-6">
+                Semestre
+                <div class="input-group mb-3">
+                    <span class="input-group-text"><i class="fas fa-edit"></i></span>
+                    <select class="form-control" id="semestre">
+                        
+
+                    </select>
+                </div>
+            </div>
+
+
+        </div>
+
+
+
+
+        <div class="text-center">
+            <button class="btn btn-mondragon" onclick="guardaDatos()"><i class="fas fa-save"></i> Guardar</button>
+            
+            
+            <button class="btn btn-mondragon2" onclick="cerrarSesion()"><i class="fa-solid fa-arrow-right-from-bracket"></i> Salir</button>
+        </div>
+
+
+
+    </div>
+
+
+    <div id="form_valido" class="form_alumno">
+        <h2>Hola de nuevo!</h2>
+        <p>Gracias por utilizar la nueva plataforma de evaluación.Tú información esta siendo validada por tu director de carrera, por favor espera a completar el proceso</p>
+
+
+        
+        
+        <div class="text-center">
+            
+            
+            
+            <button class="btn btn-mondragon2" onclick="cerrarSesion()"><i class="fa-solid fa-arrow-right-from-bracket"></i> Salir</button>
+        </div>
+
+    </div>
+
+
+</section>
+
+
+<script type="text/javascript">
+
+<?php if (isset($valido) && isset($completo)) { ?>
+
+        var valido = <?php echo ($valido) ? "true" : "false"; ?>;
+        var completo = <?php echo ($completo) ? "true" : "false"; ?>;
+
+<?php } ?>
+</script>
